@@ -10,7 +10,7 @@
                    :frequency => 15,
                    :complete => "Effect.Appear('draft-status'); if (!$('draft-status').empty() && $('draft-pending')) { $('draft-pending').hide(); }"
                    #:complete => "Element.show('draft-status'); Effect.Pulsate('draft-status',{pulses:1})"
-                 %>
+    %>
 <% end %>
 
 <div id="draft-status" style="display:none;"></div>
@@ -19,7 +19,7 @@
   <% draft = Draft.find_for_issue(:element_id => 0, :user_id => User.current) %>
   <% if draft %>
     <div id="draft-pending">
-      <%= render 'drafts/pending', :draft => draft %>
+      <%= render :partial => 'drafts/pending', :locals => { :draft => draft } %>
     </div>
   <% end %>
 <% end %>
