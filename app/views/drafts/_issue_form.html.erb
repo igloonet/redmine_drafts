@@ -6,7 +6,7 @@
   <%= observe_form :"issue-form",
                    :url => autosave_drafts_path(:issue_id => @issue.id),
                    :method => :post,
-                   :update => :"draft-status",
+#                   :update => :"draft-status",
                    :frequency => 15,
                    :complete => "Effect.Appear('draft-status'); if (!$('draft-status').empty() && $('draft-pending')) { $('draft-pending').hide(); }"
                    #:complete => "Element.show('draft-status'); Effect.Pulsate('draft-status',{pulses:1})"
