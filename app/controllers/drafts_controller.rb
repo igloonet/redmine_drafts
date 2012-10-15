@@ -36,6 +36,8 @@ class DraftsController < ApplicationController
   def destroy
     @draft = Draft.find(params[:id])
     @draft.destroy
-    render :nothing => true
+    respond_to do |format|
+       format.js
+     end
   end
 end
