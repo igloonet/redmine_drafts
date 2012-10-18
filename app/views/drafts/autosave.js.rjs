@@ -1,5 +1,0 @@
-if @saved
-  page.replace_html 'draft-status', :partial => "saved"
-else
-  page.replace_html 'draft-status', @text
-end
