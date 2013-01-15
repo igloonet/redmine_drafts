@@ -9,19 +9,18 @@ class DraftsController < ApplicationController
     if request.xhr? && has_to_be_saved
       @draft = Draft.find_or_create_for_issue(:user_id => User.current.id,
                                               :element_id => params[:issue_id].to_i)
-      @text = ''
       new_content = params.reject{|k,v| !%w(issue notes).include?(k)}
       unless @draft.content == new_content
         @draft.content = new_content
         if @draft.save
-          @saved = true
-          @text = '' 
+          render :partial => "saved", :layout => false
         else
-          @text = "Error saving draft"
+          render :text => "Error saving draft"
         end
         return
       end
     end
+    render :nothing => true unless performed?
   end
 
   def restore
